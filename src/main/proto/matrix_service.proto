@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.example.server";
+option java_outer_classname = "MatrixServiceProto";
+
+service MatrixService {
+  // Метод для умножения двух матриц
+  rpc multiply(MatrixRequest) returns (MatrixResponse);
+}
+
+// Запрос (содержит две матрицы)
+message MatrixRequest {
+  repeated Row rowsA = 1;
+  repeated Row rowsB = 2;
+}
+
+// Ответ (содержит результирующую матрицу)
+message MatrixResponse {
+  repeated Row rows = 1;
+}
+
+// Упрощённое представление матрицы
+message Row {
+  repeated double cols = 1;
+}
